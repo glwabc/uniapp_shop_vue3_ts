@@ -66,6 +66,12 @@
 
 用于配置页面路由、导航栏、tabBar 等页面类信息
 
+pages：页面路由及窗口表现
+
+globalstyle：默认窗口表现，全局修改
+
+tabBar：至少两个才显示
+
 ### 案例练习
 
 **效果预览**
@@ -79,7 +85,7 @@
   "pages": [
     {
       "path": "pages/index/index",
-      // 页面样式配置
+      // 页面样式配置   // 导航栏
       "style": {
         "navigationBarTitleText": "首页"
       }
@@ -98,15 +104,15 @@
     "navigationBarBackgroundColor": "#27BA9B",
     "backgroundColor": "#F8F8F8"
   },
-  // tabBar 配置
+  // tabBar 配置  tabBar--list 至少要配置两项才会生效
   "tabBar": {
-    "selectedColor": "#27BA9B",
+    "selectedColor": "#27BA9B",  // tabBar选中时的文字颜色
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "static/tabs/home_default.png",
-        "selectedIconPath": "static/tabs/home_selected.png"
+        "iconPath": "static/tabs/home_default.png",  // 图标
+        "selectedIconPath": "static/tabs/home_selected.png"   // 高亮图标
       },
       {
         "pagePath": "pages/my/my",
@@ -125,7 +131,7 @@
 
 uni-app 项目每个页面是一个 `.vue` 文件，数据绑定及事件处理同 `Vue.js` 规范：
 
-1. 属性绑定 `src="{ { url }}"` 升级成 `:src="url"`
+1. 属性绑定 `src="{{ url }}"` 升级成 `:src="url"`
 
 2. 事件绑定 `bindtap="eventName"` 升级成 `@tap="eventName"`，**支持（）传参**
 
@@ -147,12 +153,16 @@ uni-app 项目每个页面是一个 `.vue` 文件，数据绑定及事件处理�
 1.  滑动轮播图
 2.  点击大图预览
 
-**参考代码**
+**参考代码 **  pages\index\index.vue
 
 ```vue
 <template>
+  // indicator-dots 轮播图指示点属性  circular 无缝轮播  autoplay 自动轮播
+  // :autoplay="false"数据绑定  没有:则解析成字符串
   <swiper class="banner" indicator-dots circular :autoplay="false">
     <swiper-item v-for="item in pictures" :key="item.id">
+      // @tap 绑定一个点击事件  可以通过()进行传参
+      // @ 事件绑定     : 属性绑定
       <image @tap="onPreviewImage(item.url)" :src="item.url"></image>
     </swiper-item>
   </swiper>
@@ -190,8 +200,16 @@ export default {
   methods: {
     onPreviewImage(url) {
       // 大图预览
-      uni.previewImage({
-        urls: this.pictures.map((v) => v.url),
+      // map()方法遍历数组，返回处理后的新数组
+      // map() 方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。
+      // map() 方法按照原始数组元素顺序依次处理元素。
+      // 注意： map() 不会对空数组进行检测。
+      // 注意： map() 不会改变原始数组。
+      // 也就是对一个数组进行一定的处理并返回处理的结果。
+      // 写不写return 都会返回一个数组，需要一个值来接收这个数组。
+      // 某种程度上和foreach差不多，但是foreach不会返回。
+      uni.previewImage({         // 预览图片api
+        urls: this.pictures.map((v) => v.url),   // 需要预览的图片链接
         current: url,
       })
     },
@@ -200,6 +218,10 @@ export default {
 </script>
 
 <style>
+# 设置轮播图以及图片的宽高
+# rpx： 是微信小程序独有的，解决屏幕自适应的尺寸单位
+# 可以根据屏幕宽度进行自适应，不论屏幕大小，规定屏幕宽为 750rpx，
+# 通过rpx设置元素和字体大小，小程序在不同尺寸的屏幕上可以自适应适配
 .banner,
 .banner image {
   width: 750rpx;

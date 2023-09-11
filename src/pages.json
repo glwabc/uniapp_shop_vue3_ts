@@ -66,6 +66,7 @@
 			}
 		}
 	],
+	// 全局样式配置
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "",
