@@ -241,7 +241,20 @@ export default {
 vue3 + ts 版
 
 ```shell
-npx degit dcloudio/uni-preset-vue#vite-ts 项目名称
+# npx degit dcloudio/uni-preset-vue#vite-ts 项目名称
+npx degit dcloudio/uni-preset-vue#vite-ts uni-app-vue3-ts
+# npx是npm5.2新增的软件包管理工具，与npm绑在一起
+# 使用npx好处,使用 npx 去执行包时，会保证使用的是最新的构建工具，无需担心包版本升级的问题
+# npx <package> <command>
+# package 表示你想要使用的npm包
+# degit是一个npm包，它的功能类似于git clone，可以帮助我们执行代码clone操作。
+# #vite-ts 代表分支
+
+# 创建以 javascript 开发的工程  
+npx degit dcloudio/uni-preset-vue#vite my-vue3-project  
+
+# 创建以 typescript 开发的工程  
+npx degit dcloudio/uni-preset-vue#vite-ts my-vue3-project 
 ```
 
 创建其他版本可查看：[uni-app 官网](https://uniapp.dcloud.net.cn/quickstart-cli.html)
@@ -250,9 +263,33 @@ npx degit dcloudio/uni-preset-vue#vite-ts 项目名称
 
 1. 安装依赖 `pnpm install`
 2. 编译成微信小程序 `pnpm dev:mp-weixin`
-3. 导入微信开发者工具
+3. 导入微信开发者工具     导入 > dist > dev > mp-weixin
 
 温馨提示: 在 `manifest.json` 文件添加小程序 `appid` 方便真机预览
+
+#### 补充：启动uniapp+vue3+ts项目
+
+~~~bash
+1.安装依赖  在根目录下
+	npm i 或 yarn
+2.运行项目
+	# 运行到 h5   
+	npm run dev:h5  
+	# 运行到 app   
+	npm run dev:app  
+	# 运行到 微信小程序  
+	npm run dev:mp-weixin
+	# 微信小程序演示与调试：执行命令后，在微信开发者工具将./dist/dev/mp-weixin文件夹引入就行
+3.打包
+	# 打包到 h5   
+	npm run build:h5  
+	# 打包到 app   
+	npm run build:app  
+	# 打包到 微信小程序  
+	npm run build:mp-weixin
+~~~
+
+
 
 ## 用 VS Code 开发 uni-app 项目
 
@@ -265,13 +302,14 @@ npx degit dcloudio/uni-preset-vue#vite-ts 项目名称
 
 - 安装 uni-app 插件
   - **uni-create-view** ：快速创建 uni-app 页面
-  - **uni-helper uni-app** ：代码提示
+  - **uni-helper **：uni-app代码提示
   - **uniapp 小程序扩展** ：鼠标悬停查文档
 - TS 类型校验
   - 安装类型声明文件 `pnpm i -D @types/wechat-miniprogram @uni-helper/uni-app-types`
   - 配置 `tsconfig.json`
 - JSON 注释问题
   - 设置文件关联，把 `manifest.json` 和 `pages.json` 设置为 `jsonc`
+  - uniapp中只允许`manifest.json` 和 `pages.json`两个json文件写注释
 
 ```diff
 // tsconfig.json
@@ -294,7 +332,7 @@ npx degit dcloudio/uni-preset-vue#vite-ts 项目名称
 }
 ```
 
-注意：原配置 `experimentalRuntimeMode` 现无需添加。
+**注意：原配置 `experimentalRuntimeMode` 现无需添加。**
 
 ## 开发工具回顾
 
@@ -310,4 +348,4 @@ npx degit dcloudio/uni-preset-vue#vite-ts 项目名称
 
 使用 `VS Code` 编辑器写代码，实现 tabBar 案例 + 轮播图案例。
 
-温馨提示：`VS Code` 可通过快捷键 `Ctrl + i` 唤起代码提示。
+**温馨提示：`VS Code` 可通过快捷键 `Ctrl + i` 唤起代码提示。**

@@ -1,9 +1,11 @@
 {
 	// 组件自动引入规则
 	"easycom": {
-		// 是否开启自动扫描
+		// 是否开启自动扫描   
+		// 值为true，即查看components文件夹中是否有符合uniapp标准的组件，如果有，则可以自动导入
 		"autoscan": true,
 		// 以正则方式自定义组件匹配规则
+		// ^ 表示以什么开头     (.*) 表示提取出来名字     $1 替换符
 		"custom": {
 			// uni-ui 规则如下配置
 			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
