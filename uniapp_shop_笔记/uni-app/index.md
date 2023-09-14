@@ -14,8 +14,6 @@
 
 **1.下载安装 HbuilderX 编辑器**
 
-![下载安装 HbuilderX 编辑器](./assets/uniapp_picture_1.png)
-
 **2.通过 HbuilderX 创建 uni-app vue3 项目**
 
 <img src="./assets/uniapp_picture_2.png" alt="通过 HbuilderX 创建 uni-app vue3 项目"  />
@@ -57,8 +55,8 @@
 ├─index.html       H5端页面
 ├─main.js          Vue初始化入口文件
 ├─App.vue          配置App全局样式、监听应用生命周期
-├─pages.json       **配置页面路由、导航栏、tabBar等页面类信息**
-├─manifest.json    **配置appid**、应用名称、logo、版本等打包信息
+├─pages.json       配置页面路由、导航栏、tabBar等页面类信息
+├─manifest.json    配置appid*、应用名称、logo、版本等打包信息
 └─uni.scss         uni-app内置的常用样式变量
 ```
 
