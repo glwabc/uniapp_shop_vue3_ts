@@ -66,6 +66,12 @@
 			"style": {
 				"navigationBarTitleText": "商品详情"
 			}
+		},
+		{
+			"path": "pages/test/test1",
+			"style": {
+				"navigationBarTitleText": "test1"
+			}
 		}
 	],
 	// 全局样式配置
@@ -103,6 +109,12 @@
 			{
 				"text": "我的",
 				"pagePath": "pages/my/my",
+				"iconPath": "static/tabs/user_default.png",
+				"selectedIconPath": "static/tabs/user_selected.png"
+			},
+			{
+				"text": "测试页",
+				"pagePath": "pages/test/test1",
 				"iconPath": "static/tabs/user_default.png",
 				"selectedIconPath": "static/tabs/user_selected.png"
 			}
