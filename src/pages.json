@@ -111,12 +111,6 @@
 				"pagePath": "pages/my/my",
 				"iconPath": "static/tabs/user_default.png",
 				"selectedIconPath": "static/tabs/user_selected.png"
-			},
-			{
-				"text": "测试页",
-				"pagePath": "pages/test/test1",
-				"iconPath": "static/tabs/user_default.png",
-				"selectedIconPath": "static/tabs/user_selected.png"
 			}
 		]
 	},
